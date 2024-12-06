@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'DiceFont';
+  src: url('../fonts/dice_font.otf');
+}
