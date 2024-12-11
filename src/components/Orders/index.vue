@@ -1,5 +1,5 @@
 <template>
-  <section name="orders">
+  <section>
     <ul class="flex justify-center py-3">
       <li :class="{ 'is-active': !myBets, 'p-2 border-b-2 font-dicefont border-b-diceBlueLight text-white': true }">
         <a @click="myBets = false">All Bets</a>
@@ -36,10 +36,10 @@
         </tr>
       </tbody>
     </table>
-    <section v-if="errored">
-      <p align="center">We're sorry, we're not able to retrieve this information at the moment, please try back later
+    <div v-if="errored">
+      <p align="center">We're sorry, we're not able to retrieve this information at the moment, please try back later.
       </p>
-    </section>
+    </div>
   </section>
 </template>
 
@@ -47,33 +47,27 @@
 import { ref, computed, onMounted, watch } from 'vue';
 import { useAccountStore } from '@/store/account';
 import { toGrams, dateFormat } from '@/utils/common';
-import { Api } from '@/services/api';
+import { Api } from '@/services/apiService';
 
 let orders = ref(<Bet[]>[]);
-let ordersByAddress = ref(<Bet[]>[]);
+// let ordersByAddress = ref(<Bet[]>[]);
 
 let myBets = ref(false);
 let errored = ref(false);
 
-const api = new Api();
+const instance = new Api();
 const { account, isAuthorized, updateAccount } = useAccountStore();
 
-onMounted(() => {
-  setInterval(async () => {
-    orders.value = await api.bets.getBets() as Bet[];
-  }, 1000);
-})
-
-// const fetchOrders = async() => {
-//   orders.value = await getBets() as Bet[];
-// }
+setInterval(async () => {
+  orders.value = await instance.bets.getBets() as Bet[];
+}, 1000);
 
 const myBetsDisabled = () => {
   return !account?.address;
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 table {
   border-collapse: separate;
   border-spacing: 0 5px;

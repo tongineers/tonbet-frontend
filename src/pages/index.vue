@@ -1,16 +1,15 @@
 <template>
-    <TonConnectUIProvider class="flex justify-center h-screen bg-gradient-to-t from-fromDiceBg to-toDiceBg"
+    <TonConnectUIProvider
+        class="flex flex-col justify-center items-center h-screen bg-gradient-to-t from-fromDiceBg to-toDiceBg"
         :options="options">
-        <section class="w-11/12">
-            <Header />
-            <BetBox />
-            <Orders />
-        </section>
+        <Header />
+        <BetBox />
+        <Orders />
     </TonConnectUIProvider>
 </template>
 
 <script setup lang="ts">
-import { TonConnectUIProvider, TonConnectButton } from '@townsquarelabs/ui-vue';
+import { TonConnectUIProvider } from '@townsquarelabs/ui-vue';
 import Header from '@/components/Header';
 import BetBox from '@/components/BetBox';
 import Orders from '@/components/Orders';

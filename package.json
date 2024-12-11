@@ -2,6 +2,7 @@
   "name": "@kozld/dice-ton-front",
   "version": "1.0.0",
   "description": "Dice TON Front",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -9,8 +10,13 @@
     "style": "tailwindcss build src/assets/styles/index.css -o src/assets/styles/tailwind.css --watch"
   },
   "dependencies": {
+    "autoprefixer": "^10.4.20",
     "dotenv": "^16.4.5",
     "pinia": "^2.3.0",
+    "postcss": "^8.4.49",
+    "postcss-load-config": "^6.0.1",
+    "tonweb": "^0.0.66",
+    "ts-node": "^10.9.2",
     "vue": "^3.4.37",
     "vuex": "^4.1.0",
     "vuex-persistedstate": "^4.1.0"
@@ -22,7 +28,6 @@
     "@vitejs/plugin-vue": "^5.1.2",
     "axios": "^1.7.3",
     "js-sha256": "^0.11.0",
-    "sass-embedded": "^1.80.6",
     "tailwindcss": "^3.4.9",
     "vite": "^5.4.0",
     "vue-i18n": "^9.14.0",

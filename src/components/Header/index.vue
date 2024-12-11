@@ -6,7 +6,7 @@
 
         <div v-if="isAuthorized"
             class="flex items-center justify-between bg-gray-900 rounded-full px-2 py-1 text-white font-sans text-sm">
-            {{ addressShortener(account.address) }}
+            {{ addressShortener() }}
             <div @click="tonConnectUI.disconnect" class="cursor-pointer">
                 <figure class="w-5 ml-2">
                     <img src="../../assets/images/logout.svg">
@@ -20,6 +20,7 @@
 import { useTonConnectUI, useTonAddress } from '@townsquarelabs/ui-vue'
 import { useAccountStore } from '@/store/account';
 import { addressShortener } from '@/utils/common';
+import { computed } from 'vue';
 
 const [tonConnectUI, _] = useTonConnectUI();
 const { account, isAuthorized, updateAccount } = useAccountStore();

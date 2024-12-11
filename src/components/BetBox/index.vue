@@ -1,132 +1,147 @@
 <template>
-    <!-- Start Betbox -->
-    <div class="p-3 bg-diceBlue rounded-lg">
-        <!-- Dice Logo -->
-        <!-- <div class="flex justify-center h-0">
-            <figure class="w-20 relative -top-14 drop-shadow-2xl">
-                <img class="" src="../../assets/images/dice.png">
-            </figure>
-        </div> -->
-        <label for="bet_amount" class="text-white font-dicefont">
-            BET AMOUNT
-        </label>
-        <!-- Start Bet Amount Field -->
-        <div id="bet_amount" class="flex items-center pl-2 rounded h-10 bg-diceBlueDark">
-            <figure class="w-5">
-                <img src="../../assets/images/ton_symbol.svg">
-            </figure>
+    <section>
+        <!-- Bet Box -->
+        <div class="p-3 bg-diceBlue rounded-lg">
+            <label for="bet_amount" class="text-white font-dicefont">
+                BET AMOUNT
+            </label>
 
-            <input v-model="bet" class="focus:outline-none pl-2 bg-diceBlueDark w-1/3 font-dicefont text-white" />
+            <!-- Start Bet Amount Field -->
+            <div id="bet_amount" class="flex items-center pl-2 rounded h-10 bg-diceBlueDark">
+                <figure class="w-5">
+                    <img src="../../assets/images/ton_symbol.svg">
+                </figure>
 
-            <div class="flex font-dicefont text-white">
-                <a href="#" class="border-l border-diceBlueLight block px-3 text-center">½</a>
-                <a href="#" class="border-l border-diceBlueLight block px-3 text-center">×2</a>
-                <a href="#" class="border-l border-diceBlueLight block px-3 text-center">MAX</a>
+                <input v-model="bet" class="focus:outline-none pl-2 bg-diceBlueDark w-1/3 font-dicefont text-white" />
+
+                <div class="flex font-dicefont text-white">
+                    <a href="#" class="border-l border-diceBlueLight block px-3 text-center">½</a>
+                    <a href="#" class="border-l border-diceBlueLight block px-3 text-center">×2</a>
+                    <a href="#" class="border-l border-diceBlueLight block px-3 text-center">MAX</a>
+                </div>
             </div>
-        </div>
-        <!-- End of Bet Amount Field -->
+            <!-- End of Bet Amount Field -->
 
-        <!-- Space between fields -->
-        <div class="py-1"></div>
+            <label for="bet_amount" class="text-white font-dicefont">
+                PAYOUT ON WIN
+            </label>
 
-        <label for="bet_amount" class="text-white font-dicefont">
-            PAYOUT ON WIN
-        </label>
+            <!-- Start Payout On Win Field -->
+            <div id="bet_amount" class="flex items-center pl-2 rounded h-10 bg-diceBlueDark">
+                <figure class="w-5">
+                    <img src="../../assets/images/ton_symbol.svg">
+                </figure>
 
-        <!-- Start Payout On Win Field -->
-        <div id="bet_amount" class="flex items-center pl-2 rounded h-10 bg-diceBlueDark">
-            <figure class="w-5">
-                <img src="../../assets/images/ton_symbol.svg">
-            </figure>
+                <input v-model="payWin" class="focus:outline-none pl-2 diceBlueDark w-1/3 font-dicefont text-white"
+                    readonly />
+            </div>
+            <!-- End of Payout On Win Field -->
 
-            <input v-model="payWin" class="focus:outline-none pl-2 diceBlueDark w-1/3 font-dicefont text-white"
-                readonly />
-        </div>
-        <!-- End of Payout On Win Field -->
+            <div id="slider" class="space-y-5 flex flex-col py-3 rounded h-32 bg-diceBlueDark">
+                <div class="flex justify-between">
+                    <div class="w-1/3 flex justify-center border-r border-diceBlueLight">
+                        <div class="flex flex-col justify-between items-center">
+                            <span class="text-gray-400 text-xs font-sans text-center">
+                                ROLL UNDER TO WIN
+                            </span>
+                            <span class="text-xl font-dicefont text-white">
+                                {{ rollUnder }}
+                            </span>
+                        </div>
+                    </div>
 
-        <!-- Space between fields -->
-        <div class="py-1"></div>
+                    <div class="w-1/3 flex justify-center">
+                        <div class="flex flex-col justify-between items-center">
+                            <span class="text-gray-400 text-xs font-sans text-center">
+                                PAYOUT
+                            </span>
+                            <span class="text-xl font-dicefont text-white">
+                                ×{{ Number(payOut).toFixed(2) }}
+                            </span>
+                        </div>
+                    </div>
 
-        <div id="slider" class="space-y-5 flex flex-col py-3 rounded h-32 bg-diceBlueDark">
-            <div class="flex justify-between">
-                <div class="w-1/3 flex justify-center border-r border-diceBlueLight">
-                    <div class="flex flex-col justify-between items-center">
-                        <span class="text-gray-400 text-xs font-sans text-center">
-                            ROLL UNDER TO WIN
-                        </span>
-                        <span class="text-xl font-dicefont text-white">
-                            {{ rollUnder }}
-                        </span>
+                    <div class="w-1/3 flex justify-center border-l border-diceBlueLight">
+                        <div class="flex flex-col justify-between items-center">
+                            <span class="text-gray-400 text-xs font-sans text-center">
+                                WIN CHANCE
+                            </span>
+                            <span class="text-xl font-dicefont text-white">
+                                {{ winChance }}%
+                            </span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="w-1/3 flex justify-center">
-                    <div class="flex flex-col justify-between items-center">
-                        <span class="text-gray-400 text-xs font-sans text-center">
-                            PAYOUT
-                        </span>
-                        <span class="text-xl font-dicefont text-white">
-                            ×{{ Number(payOut).toFixed(2) }}
-                        </span>
+                <VSlider v-model="rollUnder" min="2" max="96" color="#518FE6" step="1" track-color="grey"
+                    thumb-label="always" />
+            </div>
+
+            <div class="flex items-center justify-center relative">
+                <div v-if="address" @click="placeBet"
+                    class="cursor-pointer shine before:animate-shine bg-diceGold rounded-full font-dicefont text-white px-6 pt-2 pb-1">
+                    🎲 ROLL DICE
+                </div>
+                <div v-else @click="open" class="cursor-pointer">
+                    <div
+                        class="shine before:animate-shine rounded-full bg-gradient-to-r from-fuchsia-500 to-cyan-500 font-dicefont text-white px-12 pt-2 pb-1">
+                        Connect Wallet
+                    </div>
+                    <div class="h-0">
+                        <figure class="relative w-14 -top-10 -left-7">
+                            <img class="" src=" ../../assets/images/stars.png">
+                        </figure>
                     </div>
                 </div>
 
-                <div class="w-1/3 flex justify-center border-l border-diceBlueLight">
-                    <div class="flex flex-col justify-between items-center">
-                        <span class="text-gray-400 text-xs font-sans text-center">
-                            WIN CHANCE
-                        </span>
-                        <span class="text-xl font-dicefont text-white">
-                            {{ winChance }}%
-                        </span>
-                    </div>
+                <div class="absolute right-0 font-dicefont text-white">
+                    {{ toGrams(balance) }} TON
                 </div>
             </div>
-            <VSlider v-model="rollUnder" min="2" max="96" color="#518FE6" step="1" track-color="grey"
-                thumb-label="always" />
         </div>
 
-        <!-- Space between fields -->
-        <div class="py-2"></div>
-
-        <div class="flex items-center justify-center relative">
-            <div v-if="address"
-                class="shine before:animate-shine bg-diceGold rounded-full font-dicefont text-white px-6 pt-2 pb-1">
-                🎲 ROLL DICE
+        <!-- Modal For Display Bet Result -->
+        <Modal v-model:visible="isModalVisible">
+            <div v-if="!betResult">
+                <ProgressBar />
             </div>
-            <div v-else @click="open" class="cursor-pointer">
-                <div
-                    class="shine before:animate-shine rounded-full bg-gradient-to-r from-fuchsia-500 to-cyan-500 font-dicefont text-white px-12 pt-2 pb-1">
-                    Connect Wallet
-                </div>
-                <div class="h-0">
-                    <figure class="relative w-14 -top-10 -left-7">
-                        <img class="" src=" ../../assets/images/stars.png">
-                    </figure>
-                </div>
+            <div v-else class="flex flex-col justify-center items-center">
+                <p class="bg-green-500 text-5xl font-bold text-white p-5 rounded-lg">
+                    {{ betResult.roll }}
+                </p>
+                <p class="text-5xl font-bold">
+                    {{ betResult.message }}
+                </p>
             </div>
-
-            <div class="absolute right-0 font-dicefont text-white">
-                {{ toGrams(balance) }} TON
-            </div>
-        </div>
-    </div>
-    <!-- End of Betbox -->
+        </Modal>
+    </section>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, watch } from 'vue';
+import { ref, computed } from 'vue';
 import { VSlider } from 'vuetify/components/VSlider';
-import { useTonConnectUI, useTonConnectModal, useIsConnectionRestored, useTonAddress } from '@townsquarelabs/ui-vue';
-import { useAccountStore } from '@/store/account';
-import { dateFormat, toGrams } from '@/utils/common';
+
+import TonWeb from 'tonweb';
+import { useTonConnectUI, useTonConnectModal, useTonAddress } from '@townsquarelabs/ui-vue';
+
+import Modal from '@/components/Modal';
+import ProgressBar from '@/components/ProgressBar';
+
+import { monitorBetResult } from '@/services/betService';
+import { toGrams } from '@/utils/common';
 
 const houseFee = 4;
+
+const isModalVisible = ref(false);
+const betResult = ref<null | { message: string; roll: number }>();
+// {
+//     message: 'You are won! 🎉',
+//     roll: 43
+// }
+
 const [tonConnectUI, _] = useTonConnectUI();
 const { state, open, close } = useTonConnectModal();
-const { account, isAuthorized, updateAccount } = useAccountStore();
 
-// let isConnectionRestored = useIsConnectionRestored();
 let address = useTonAddress();
 let balance = ref(0);
 let bet = ref(0);
@@ -144,33 +159,41 @@ const payWin = computed(() => {
     return bet.value > 0 ? (Math.trunc(bet.value * payOut.value * 10000) / 10000) : 0;
 })
 
-watch(address, () => {
-    if (!address.value) return;
-    updateAccount({
-        address: address.value,
-        lastActionTime: new Date(),
-    })
-})
+// watch(address, () => {
+//     updateAccount({
+//         ...account.value,
+//         address: address.value,
+//     });
+// })
 
-const rollDice = () => {
-    let msg = {
+const placeBet = async () => {
+    isModalVisible.value = true;
+
+    const transaction = {
         validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
         messages: [
             {
-                address: "0QCOu1fuLmD9kBKDkfC6lDskGFbQWCJwimWJvEWWB0D65JvH",
-                amount: '20000000',
+                address: '0QCOu1fuLmD9kBKDkfC6lDskGFbQWCJwimWJvEWWB0D65JvH',
+                amount: `${bet.value}`,
                 payload: `${rollUnder}`
             }
         ]
     };
 
-    tonConnectUI.sendTransaction(
-        msg
-    );
+    try {
+        // const response = await tonConnectUI.sendTransaction(transaction);
+        // const bocCellBytes = await TonWeb.boc.Cell.oneFromBoc(TonWeb.utils.base64ToBytes(response.boc)).hash();
+        // const transactionHash = TonWeb.utils.bytesToBase64(bocCellBytes);
+
+        const result = await monitorBetResult('EQBdx6lPsOR_quNbfCZUiRgTIa08OosNaSUwnqhjkNFUzJSi', new Date(Date.parse("2024-04-04")));
+        betResult.value = result;
+    } catch (e) {
+        console.error(e);
+    }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="postcss" scoped>
 .shine {
     position: relative;
     overflow: hidden;
