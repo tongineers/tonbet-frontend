@@ -1,10 +1,12 @@
 <template>
     <TonConnectUIProvider
-        class="flex flex-col justify-center items-center h-screen bg-gradient-to-t from-fromDiceBg to-toDiceBg"
+        class="flex flex-col justify-center items-center h-full bg-gradient-to-t from-fromDiceBg to-toDiceBg"
         :options="options">
-        <Header />
-        <BetBox />
-        <Orders />
+        <section class="w-11/12">
+            <Header />
+            <BetBox />
+            <Orders />
+        </section>
     </TonConnectUIProvider>
 </template>
 

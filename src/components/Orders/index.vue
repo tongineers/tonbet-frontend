@@ -1,44 +1,46 @@
 <template>
   <section>
-    <ul class="flex justify-center py-3">
-      <li :class="{ 'is-active': !myBets, 'p-2 border-b-2 font-dicefont border-b-diceBlueLight text-white': true }">
-        <a @click="myBets = false">All Bets</a>
-      </li>
-      <li :class="{ 'is-active': myBets, 'p-2 border-b-2 font-dicefont border-b-transparent text-white': true }">
-        <a @click="myBets = true" :disabled='myBetsDisabled'>My Bets</a>
-      </li>
-    </ul>
-    <table class="w-full">
-      <thead class="font-dicefont text-white">
-        <tr>
-          <th class="text-left">Time</th>
-          <th class="text-left">Bettor</th>
-          <th class="text-center">Roll Under</th>
-          <th class="text-center">Bet</th>
-          <th class="text-right">Roll</th>
-          <th class="text-right">Payout</th>
-        </tr>
-      </thead>
-      <tbody class="text-sm text-white font-sans">
-        <tr v-for="(o, index) in orders" :key="index" class="h-14">
-          <td class="text-left">{{ dateFormat(o.createdAt) }}</td>
-          <td class="text-left">{{ o.playerAddress }}</td>
-          <td class="text-center">{{ o.rollUnder }}</td>
-          <td class="text-center">{{ toGrams(o.amount) }}</td>
-          <td class="text-right">
-            {{ o.randomRoll }}
-            <span v-if="o.randomRoll < o.rollUnder" class="text-xs text-green-500">▼</span>
-            <span v-else class="text-xs">▲</span>
-          </td>
-          <td class="text-right" :class="{ 'text-green-500': o.randomRoll < o.rollUnder }">
-            {{ toGrams(o.payout) }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <div v-if="errored">
-      <p align="center">We're sorry, we're not able to retrieve this information at the moment, please try back later.
-      </p>
+    <div class="h-full">
+      <ul class="flex justify-center py-3">
+        <li :class="{ 'is-active': !myBets, 'p-2 border-b-2 font-dicefont border-b-diceBlueLight text-white': true }">
+          <a @click="myBets = false">{{ $t('allBets') }}</a>
+        </li>
+        <li :class="{ 'is-active': myBets, 'p-2 border-b-2 font-dicefont border-b-transparent text-white': true }">
+          <a @click="myBets = true" :disabled='myBetsDisabled'>{{ $t('myBets') }}</a>
+        </li>
+      </ul>
+      <table class="w-full">
+        <thead class="font-dicefont text-white">
+          <tr>
+            <th class="text-left">{{ $t('time') }}</th>
+            <th class="text-left">{{ $t('bettor') }}</th>
+            <th class="text-center">{{ $t('rollunder') }}</th>
+            <th class="text-center">{{ $t('bet') }}</th>
+            <th class="text-right">{{ $t('roll') }}</th>
+            <th class="text-right">{{ $t('payout') }}</th>
+          </tr>
+        </thead>
+        <tbody class="text-sm text-white font-sans">
+          <tr v-for="(o, index) in orders" :key="index" class="h-14">
+            <td class="text-left">{{ dateFormat(o.createdAt) }}</td>
+            <td class="text-left">{{ o.playerAddress }}</td>
+            <td class="text-center">{{ o.rollUnder }}</td>
+            <td class="text-center">{{ toGrams(o.amount) }}</td>
+            <td class="text-right">
+              {{ o.randomRoll }}
+              <span v-if="o.randomRoll < o.rollUnder" class="text-xs text-green-500">▼</span>
+              <span v-else class="text-xs">▲</span>
+            </td>
+            <td class="text-right" :class="{ 'text-green-500': o.randomRoll < o.rollUnder }">
+              {{ toGrams(o.payout) }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div v-if="errored">
+        <p align="center">We're sorry, we're not able to retrieve this information at the moment, please try back later.
+        </p>
+      </div>
     </div>
   </section>
 </template>

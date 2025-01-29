@@ -1,9 +1,9 @@
 <template>
     <section>
         <div v-if="visible"
-            class="flex justify-center items-center h-full w-full absolute top-0 left-0 backdrop-blur-sm bg-white/30"
+            class="flex justify-center items-center h-screen w-full absolute top-0 left-0 backdrop-blur-sm bg-white/30"
             @click="close">
-            <div class="w-3/4 bg-white p-5 rounded-lg">
+            <div class="">
                 <slot></slot>
             </div>
         </div>

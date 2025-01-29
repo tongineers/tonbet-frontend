@@ -3,11 +3,11 @@
         <!-- Bet Box -->
         <div class="p-3 bg-diceBlue rounded-lg">
             <label for="bet_amount" class="text-white font-dicefont">
-                BET AMOUNT
+                {{ $t('betAmount') }}
             </label>
 
             <!-- Start Bet Amount Field -->
-            <div id="bet_amount" class="flex items-center pl-2 rounded h-10 bg-diceBlueDark">
+            <div id="bet_amount" class="mb-2 flex items-center pl-2 rounded h-10 bg-diceBlueDark">
                 <figure class="w-5">
                     <img src="../../assets/images/ton_symbol.svg">
                 </figure>
@@ -23,7 +23,7 @@
             <!-- End of Bet Amount Field -->
 
             <label for="bet_amount" class="text-white font-dicefont">
-                PAYOUT ON WIN
+                {{ $t('payoutOnWin') }}
             </label>
 
             <!-- Start Payout On Win Field -->
@@ -37,12 +37,12 @@
             </div>
             <!-- End of Payout On Win Field -->
 
-            <div id="slider" class="space-y-5 flex flex-col py-3 rounded h-32 bg-diceBlueDark">
+            <div id="slider" class="mt-2 space-y-5 flex flex-col py-3 rounded h-32 bg-diceBlueDark">
                 <div class="flex justify-between">
                     <div class="w-1/3 flex justify-center border-r border-diceBlueLight">
                         <div class="flex flex-col justify-between items-center">
                             <span class="text-gray-400 text-xs font-sans text-center">
-                                ROLL UNDER TO WIN
+                                {{ $t('rollunderToWin') }}
                             </span>
                             <span class="text-xl font-dicefont text-white">
                                 {{ rollUnder }}
@@ -53,7 +53,7 @@
                     <div class="w-1/3 flex justify-center">
                         <div class="flex flex-col justify-between items-center">
                             <span class="text-gray-400 text-xs font-sans text-center">
-                                PAYOUT
+                                {{ $t('ratio') }}
                             </span>
                             <span class="text-xl font-dicefont text-white">
                                 ×{{ Number(payOut).toFixed(2) }}
@@ -64,7 +64,7 @@
                     <div class="w-1/3 flex justify-center border-l border-diceBlueLight">
                         <div class="flex flex-col justify-between items-center">
                             <span class="text-gray-400 text-xs font-sans text-center">
-                                WIN CHANCE
+                                {{ $t('winChance') }}
                             </span>
                             <span class="text-xl font-dicefont text-white">
                                 {{ winChance }}%
@@ -77,15 +77,15 @@
                     thumb-label="always" />
             </div>
 
-            <div class="flex items-center justify-center relative">
+            <div class="mt-3 flex items-center justify-center relative">
                 <div v-if="address" @click="placeBet"
-                    class="cursor-pointer shine before:animate-shine bg-diceGold rounded-full font-dicefont text-white px-6 pt-2 pb-1">
-                    🎲 ROLL DICE
+                    class="cursor-pointer shine before:animate-shine bg-diceGold rounded-full font-dicefont text-white px-6 py-1 pb-2">
+                    {{ $t('rollDice') }}
                 </div>
                 <div v-else @click="open" class="cursor-pointer">
                     <div
-                        class="shine before:animate-shine rounded-full bg-gradient-to-r from-fuchsia-500 to-cyan-500 font-dicefont text-white px-12 pt-2 pb-1">
-                        Connect Wallet
+                        class="shine before:animate-shine rounded-full bg-gradient-to-r from-fuchsia-500 to-cyan-500 font-dicefont text-white px-12 py-1 pb-2">
+                        {{ $t('connectWallet') }}
                     </div>
                     <div class="h-0">
                         <figure class="relative w-14 -top-10 -left-7">
@@ -102,14 +102,14 @@
 
         <!-- Modal For Display Bet Result -->
         <Modal v-model:visible="isModalVisible">
-            <div v-if="!betResult">
+            <div v-if="!betResult" class="">
                 <ProgressBar />
             </div>
             <div v-else class="flex flex-col justify-center items-center">
                 <p class="bg-green-500 text-5xl font-bold text-white p-5 rounded-lg">
-                    {{ betResult.roll }}
+                    {{ betResult.roll }} ▼
                 </p>
-                <p class="text-5xl font-bold">
+                <p class="pt-5 text-5xl font-bold text-white">
                     {{ betResult.message }}
                 </p>
             </div>
@@ -167,25 +167,27 @@ const payWin = computed(() => {
 // })
 
 const placeBet = async () => {
-    isModalVisible.value = true;
-
     const transaction = {
+        from: address.value,
         validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
         messages: [
             {
-                address: '0QCOu1fuLmD9kBKDkfC6lDskGFbQWCJwimWJvEWWB0D65JvH',
-                amount: `${bet.value}`,
-                payload: `${rollUnder}`
+                address: 'EQBdx6lPsOR_quNbfCZUiRgTIa08OosNaSUwnqhjkNFUzJSi',
+                amount: `${bet.value * 1000000000}`, // 10000 nanograms = 0.00001 Grams
+                payload: `${rollUnder.value}`
             }
         ]
     };
 
+    console.log(transaction);
+
     try {
-        // const response = await tonConnectUI.sendTransaction(transaction);
+        await tonConnectUI.sendTransaction(transaction);
+        isModalVisible.value = true;
         // const bocCellBytes = await TonWeb.boc.Cell.oneFromBoc(TonWeb.utils.base64ToBytes(response.boc)).hash();
         // const transactionHash = TonWeb.utils.bytesToBase64(bocCellBytes);
 
-        const result = await monitorBetResult('EQBdx6lPsOR_quNbfCZUiRgTIa08OosNaSUwnqhjkNFUzJSi', new Date(Date.parse("2024-04-04")));
+        const result = await monitorBetResult(address.value, new Date());
         betResult.value = result;
     } catch (e) {
         console.error(e);

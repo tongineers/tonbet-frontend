@@ -586,8 +586,33 @@ video {
   top: 0px;
 }
 
+.top-full {
+  top: 100%;
+}
+
+.m-1 {
+  margin: 0.25rem;
+}
+
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+
 .ml-2 {
   margin-left: 0.5rem;
+}
+
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-3 {
+  margin-top: 0.75rem;
 }
 
 .block {
@@ -614,6 +639,10 @@ video {
   height: 2.5rem;
 }
 
+.h-12 {
+  height: 3rem;
+}
+
 .h-14 {
   height: 3.5rem;
 }
@@ -638,12 +667,16 @@ video {
   width: 33.333333%;
 }
 
-.w-14 {
-  width: 3.5rem;
+.w-11\/12 {
+  width: 91.666667%;
 }
 
-.w-3\/4 {
-  width: 75%;
+.w-12 {
+  width: 3rem;
+}
+
+.w-14 {
+  width: 3.5rem;
 }
 
 .w-40 {
@@ -670,6 +703,16 @@ video {
 
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
 }
 
 .cursor-pointer {
@@ -714,6 +757,10 @@ video {
   border-radius: 0.5rem;
 }
 
+.border-4 {
+  border-width: 4px;
+}
+
 .border-b-2 {
   border-bottom-width: 2px;
 }
@@ -726,9 +773,18 @@ video {
   border-right-width: 1px;
 }
 
+.border-solid {
+  border-style: solid;
+}
+
 .border-diceBlueLight {
   --tw-border-opacity: 1;
   border-color: rgb(81 143 230 / var(--tw-border-opacity));
+}
+
+.border-white {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
 .border-b-diceBlueLight {
@@ -738,6 +794,10 @@ video {
 
 .border-b-transparent {
   border-bottom-color: transparent;
+}
+
+.border-t-transparent {
+  border-top-color: transparent;
 }
 
 .bg-diceBlue {
@@ -864,16 +924,32 @@ video {
   padding-bottom: 0.75rem;
 }
 
-.pb-1 {
-  padding-bottom: 0.25rem;
+.pb-2 {
+  padding-bottom: 0.5rem;
+}
+
+.pl-1 {
+  padding-left: 0.25rem;
 }
 
 .pl-2 {
   padding-left: 0.5rem;
 }
 
+.pl-3 {
+  padding-left: 0.75rem;
+}
+
+.pr-3 {
+  padding-right: 0.75rem;
+}
+
 .pt-2 {
   padding-top: 0.5rem;
+}
+
+.pt-5 {
+  padding-top: 1.25rem;
 }
 
 .text-left {
@@ -899,11 +975,6 @@ video {
 .text-5xl {
   font-size: 3rem;
   line-height: 1;
-}
-
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
 }
 
 .text-sm {
@@ -953,7 +1024,7 @@ video {
 @font-face {
   font-family: 'DiceFont';
 
-  src: url('../fonts/dice_font.otf');
+  src: url('../fonts/urw_geometric.ttf');
 }
 
 @keyframes shine {
