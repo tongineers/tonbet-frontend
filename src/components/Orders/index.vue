@@ -13,7 +13,7 @@
       </ul> -->
 
       <table class="w-full">
-        <thead class="font-spacegrotesk text-xs text-white">
+        <thead class="text-xs text-white">
           <tr>
             <th class="text-left">{{ $t('time') }}</th>
             <th class="text-left">{{ $t('bettor') }}</th>
@@ -23,7 +23,7 @@
             <th class="text-right">{{ $t('payout') }}</th>
           </tr>
         </thead>
-        <tbody class="text-sm text-tonbetLightBlue font-spacegrotesk">
+        <tbody class="text-sm text-highlight">
           <tr v-for="(o, index) in orders" :key="index" class="h-14">
             <td class="text-left">{{ dateFormat(o.createdAt) }}</td>
             <td class="text-left">{{ addressShortener(o.playerAddress) }}</td>

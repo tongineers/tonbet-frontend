@@ -7,7 +7,7 @@
                 <!-- Bet Amount Field -->
                 <div class="bg-royal-blue rounded-2xl px-4 py-2">
                     <div class="flex-between">
-                        <span class="text-sm font-semibold text-white">{{ $t('betAmount') }}</span>
+                        <span class="text-sm text-highlight font-semibold">{{ $t('betAmount') }}</span>
 
                         <!-- Balance Amount -->
                         <div class="flex items-center">
@@ -41,7 +41,7 @@
 
                 <!-- Payout On Win Field -->
                 <div class="bg-royal-blue rounded-2xl px-4 py-2 mt-2">
-                    <span class="text-sm text-white font-semibold">{{ $t('payoutOnWin') }}</span>
+                    <span class="text-sm text-highlight font-semibold">{{ $t('payoutOnWin') }}</span>
 
                     <!-- Payout On Win Input (read-only) -->
                     <div class="flex-start mt-2">
@@ -57,9 +57,9 @@
                     <div class="flex-between">
 
                         <!-- Roll Under -->
-                        <div class="flex-center w-1/3 border-r border-white">
+                        <div class="flex-center w-1/3 border-r border-highlight">
                             <div class="flex-center flex-col">
-                                <span class="text-sm text-white font-semibold">
+                                <span class="text-sm text-highlight font-semibold">
                                     {{ $t('rollunderToWin') }}
                                 </span>
                                 <span class="text-xl text-white font-bold">
@@ -71,7 +71,7 @@
                         <!-- Payout On Win -->
                         <div class="flex-center w-1/3">
                             <div class="flex-center flex-col">
-                                <span class="text-sm text-white font-semibold">
+                                <span class="text-sm text-highlight font-semibold">
                                     {{ $t('ratio') }}
                                 </span>
                                 <span class="text-xl text-white font-bold">
@@ -81,9 +81,9 @@
                         </div>
 
                         <!-- Win Chance -->
-                        <div class="flex-center w-1/3 border-l border-white">
+                        <div class="flex-center w-1/3 border-l border-highlight">
                             <div class="flex-center flex-col">
-                                <span class="text-sm text-white font-semibold">
+                                <span class="text-sm text-highlight font-semibold">
                                     {{ $t('winChance') }}
                                 </span>
                                 <span class="text-xl text-white font-bold">
@@ -99,7 +99,7 @@
                 </div>
 
                 <!-- Roll Dice Button -->
-                <div class="flex-center bg-gradient-primary rounded-2xl h-10 py-1 px-10 font-bold text-white mt-2">
+                <div class="flex-center bg-gradient-primary h-10 text-white font-bold rounded-2xl px-10 py-1 mt-2">
                     Roll Dice
                 </div>
 
