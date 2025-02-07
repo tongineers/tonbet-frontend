@@ -10,3 +10,7 @@
 .bg-gradient-dark {
 	@apply bg-gradient-to-r from-[$color-midnight-blue] to-[$color-royal-blue];
 }
+
+.bg-gradient-token {
+	@apply bg-gradient-to-r from-[$color-highlight-alt] to-[$color-deep-blue];
+}

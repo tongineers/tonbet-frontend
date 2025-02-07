@@ -1,9 +1,11 @@
 <template>
     <section>
-        <div class="bg-gradient-dark min-h-screen">
-            <Header />
-            <Dice />
-            <Orders />
+        <div class="flex-start flex-col bg-gradient-dark min-h-screen">
+            <div class="w-11/12">
+                <Header class="py-2" />
+                <Dice />
+                <Orders />
+            </div>
         </div>
     </section>
 </template>

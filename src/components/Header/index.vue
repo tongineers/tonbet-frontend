@@ -1,24 +1,20 @@
 <template>
     <section>
-        <div class="flex justify-between items-center">
+        <div class="flex-between">
             <!-- Logo -->
-            <figure class="ml-4 w-10">
+            <figure class="w-10">
                 <img class="" src="../../assets/images/ellipse.png">
             </figure>
 
             <!-- Navigation -->
-            <nav>
-                <div
-                    class="flex items-center bg-betBoxBgTo rounded-full text-sm font-spacegrotesk font-bold text-white p-1">
-                    <RouterLink to="/"
-                        class="bg-gradient-to-tr from-tonbetSwitchFrom to-tonbetSwitchTo rounded-full px-6 py-2">
-                        Dice
-                    </RouterLink>
-                    <RouterLink to="/yield" class="px-6 py-2">
-                        Liquidity
-                    </RouterLink>
-                </div>
-            </nav>
+            <div class="flex-center bg-gradient-dark rounded-full text-sm font-bold text-white p-1">
+                <RouterLink to="/" class="bg-gradient-to-tr from-text-info to-text-link rounded-full px-6 py-2">
+                    Dice
+                </RouterLink>
+                <RouterLink to="/yield" class="px-6 py-2">
+                    Liquidity
+                </RouterLink>
+            </div>
         </div>
 
         <!-- <div class="flex items-center">
