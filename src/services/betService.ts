@@ -27,6 +27,6 @@ export async function monitorBetResult(address: string, fromLT: Date): Promise<{
             } catch (e) {
                 return e
             }
-        }, 1000);
+        }, 100);
     });
 }

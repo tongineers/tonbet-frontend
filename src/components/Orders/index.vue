@@ -1,16 +1,19 @@
 <template>
   <section>
-    <div class="h-full">
-      <ul class="flex justify-center py-3">
-        <li :class="{ 'is-active': !myBets, 'p-2 border-b-2 font-dicefont border-b-diceBlueLight text-white': true }">
+    <div class="mt-8 h-full">
+      <!-- <ul class="flex justify-center py-3">
+        <li
+          :class="{ 'is-active': !myBets, 'p-2 border-b-2 font-spacegrotesk border-b-diceBlueLight text-sm font-bold text-white': true }">
           <a @click="myBets = false">{{ $t('allBets') }}</a>
         </li>
-        <li :class="{ 'is-active': myBets, 'p-2 border-b-2 font-dicefont border-b-transparent text-white': true }">
+        <li
+          :class="{ 'is-active': myBets, 'p-2 border-b-2 font-spacegrotesk border-b-transparent text-sm font-bold text-white': true }">
           <a @click="myBets = true" :disabled='myBetsDisabled'>{{ $t('myBets') }}</a>
         </li>
-      </ul>
+      </ul> -->
+
       <table class="w-full">
-        <thead class="font-dicefont text-white">
+        <thead class="font-spacegrotesk text-xs text-white">
           <tr>
             <th class="text-left">{{ $t('time') }}</th>
             <th class="text-left">{{ $t('bettor') }}</th>
@@ -20,16 +23,20 @@
             <th class="text-right">{{ $t('payout') }}</th>
           </tr>
         </thead>
-        <tbody class="text-sm text-white font-sans">
+        <tbody class="text-sm text-tonbetLightBlue font-spacegrotesk">
           <tr v-for="(o, index) in orders" :key="index" class="h-14">
             <td class="text-left">{{ dateFormat(o.createdAt) }}</td>
-            <td class="text-left">{{ o.playerAddress }}</td>
+            <td class="text-left">{{ addressShortener(o.playerAddress) }}</td>
             <td class="text-center">{{ o.rollUnder }}</td>
             <td class="text-center">{{ toGrams(o.amount) }}</td>
             <td class="text-right">
               {{ o.randomRoll }}
-              <span v-if="o.randomRoll < o.rollUnder" class="text-xs text-green-500">▼</span>
-              <span v-else class="text-xs">▲</span>
+              <!-- 
+                flex justify-center items-center gap-1
+                <div class="flex justify-center items-center w-4 rounded-full bg-green-300 text-green-700 text-xs">
+                  <span v-if="o.randomRoll < o.rollUnder" class="text-xs text-green-500 ">▼</span>
+                  <span v-else class="text-xs">▲</span>
+                </div> -->
             </td>
             <td class="text-right" :class="{ 'text-green-500': o.randomRoll < o.rollUnder }">
               {{ toGrams(o.payout) }}
@@ -38,7 +45,8 @@
         </tbody>
       </table>
       <div v-if="errored">
-        <p align="center">We're sorry, we're not able to retrieve this information at the moment, please try back later.
+        <p align="center">We're sorry, we're not able to retrieve this information at the moment, please try back
+          later.
         </p>
       </div>
     </div>
@@ -48,7 +56,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue';
 import { useAccountStore } from '@/store/account';
-import { toGrams, dateFormat } from '@/utils/common';
+import { toGrams, dateFormat, addressShortener } from '@/utils/common';
 import { Api } from '@/services/apiService';
 
 let orders = ref(<Bet[]>[]);
@@ -89,7 +97,7 @@ table {
   tbody {
     tr {
       td {
-        background: rgba(19, 51, 98, .4);
+        background: #191854;
       }
 
       td:first-child {

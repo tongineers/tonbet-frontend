@@ -29,9 +29,9 @@ interface ILanguage {
 }
 
 const languages: { [key: string]: ILanguage } = {
-    en: { label: "English", flag: "/src/assets/images/flag-us.png" },
-    ru: { label: "Русский", flag: "/src/assets/images/flag-ru.png" },
-    ch: { label: "中文", flag: "/src/assets/images/flag-ch.png" },
+    en: { label: "English", flag: "../../assets/images/flag-us.png" },
+    ru: { label: "Русский", flag: "../../assets/images/flag-ru.png" },
+    ch: { label: "中文", flag: "../../assets/images/flag-ch.png" },
 };
 
 const currentLanguage = computed(() => languages[locale.value]);

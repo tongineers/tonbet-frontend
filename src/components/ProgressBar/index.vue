@@ -57,23 +57,7 @@ const intervalID = setInterval(() => {
     }
 
     currentStep.value++;
-}, 3000);
+}, 1000);
 </script>
 
-<style scoped lang="postcss">
-.step-name {
-    @apply text-xl font-bold font-sans text-white;
-}
-
-.step-description {
-    @apply flex bg-white text-sm font-normal font-sans my-2 py-1 pl-2 pr-3 rounded-full;
-}
-
-.progress-bar {
-    @apply bg-gray-200 h-4 overflow-hidden rounded-full;
-}
-
-.progress-bar-content {
-    @apply bg-gradient-to-r from-green-500 to-blue-500 h-4 animate-pulse rounded-full;
-}
-</style>
+<style scoped lang="postcss"></style>

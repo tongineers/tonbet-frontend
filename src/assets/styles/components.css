@@ -1,0 +1,16 @@
+@import "./gradients/gradients.css" layer(components);
+@import "./highlights/highlights.css" layer(components);
+
+/* @layer components {
+  .bg-primary {
+    @apply bg-gradient-to-b from-[$color-electric-cyan] to-[$color-violet];
+  }
+  
+  .bg-secondary {
+    @apply bg-gradient-to-br from-[$color-gradient-end] to-[$color-gradient-dark];
+  }
+  
+  .bg-main {
+    @apply bg-gradient-to-r from-[$color-midnight-blue] to-[$color-royal-blue];
+  }
+} */

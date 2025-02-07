@@ -1,0 +1,48 @@
+/* Background colors */
+$color-background-primary: #131313;
+$color-background-secondary: #1C171B;
+$color-background-dark: #1B1B1B;
+$color-background-muted: #2E272E;
+
+/* Text colors */
+$color-text-primary: #9B9B9B;
+$color-text-accent: #EB7FF7;
+$color-text-link: #2B6CFD;
+$color-text-info: #36B9E0;
+
+/* Border colors */
+$color-border-primary: #385F86;
+$color-border-secondary: #1D2F55;
+$color-border-dark: #1D3E67;
+
+/* UI colors */
+$color-ui-button: #2AC5C7;
+$color-ui-hover: #656EA9;
+$color-ui-active: #6E4EFC;
+
+/* Gradient colors */
+$color-gradient-start: #181648;
+$color-gradient-end: #18225F;
+$color-gradient-dark: #191854;
+
+/* Highlight colors */
+$color-highlight: #B4C9FF;
+$color-highlight-alt: #172C65;
+
+/* Common colors */
+$color-deep-blue: #141042;
+$color-midnight-blue: #0C0928;
+$color-royal-blue: #120D35;
+$color-electric-cyan: #00FCFA;
+$color-violet: #944EFC;
+$color-success: #32B889;
+
+/* Common colors */
+$color-dark-navy: #133362;
+$color-very-dark-blue: #061D3F;
+$color-light-blue: #518FE6;
+
+/* Common colors */
+$color-warning: #FDBE3D;
+$color-deep-night: #061637;
+$color-deep-ocean: #0B2766;

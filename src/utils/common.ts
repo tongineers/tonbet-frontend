@@ -7,7 +7,7 @@ const addressShortener = (address: string): string => {
 }
 
 const toGrams = (n: number): string => {
-    return Number(n / 1000000000).toFixed(4);
+    return Number(n / 1000000000).toFixed(2);
 }
 
 const dateFormat = (raw: Date): string => {

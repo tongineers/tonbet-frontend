@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@import "./fonts.css" layer(base);
+@import "./colors.css" layer(base);
+@import "./components.css" layer(components);
+@import "./utilities.css" layer(utilities);
+
+@layer base {
+  :root {
+    /* Background colors */
+    --color-background-primary: $color-background-primary;
+    --color-background-secondary: $color-background-secondary;
+    --color-background-dark: $color-background-dark;
+    --color-background-muted: $color-background-muted;
+
+    /* Text colors */
+    --color-text-primary: $color-text-primary;
+    --color-text-accent: $color-text-accent;
+    --color-text-link: $color-text-link;
+    --color-text-info: $color-text-info;
+
+    /* Border colors */
+    --color-border-primary: $color-border-primary;
+    --color-border-secondary: $color-border-secondary;
+    --color-border-dark: $color-border-dark;
+
+    /* UI colors */
+    --color-ui-button: $color-ui-button;
+    --color-ui-hover: $color-ui-hover;
+    --color-ui-active: $color-ui-active;
+
+    /* Gradient colors */
+    --color-gradient-start: $color-gradient-start;
+    --color-gradient-end: $color-gradient-end;
+    --color-gradient-dark: $color-gradient-dark;
+
+    /* Highlight colors */
+    --color-highlight: $color-highlight;
+    --color-highlight-alt: $color-highlight-alt;
+
+    /* Common colors */
+    --color-deep-blue: $color-deep-blue;
+    --color-midnight-blue: $color-midnight-blue;
+    --color-royal-blue: $color-royal-blue;
+    --color-electric-cyan: $color-electric-cyan;
+    --color-violet: $color-violet;
+    --color-success: $color-success;
+
+    /* Common colors */
+    --color-dark-navy: $color-dark-navy;
+    --color-very-dark-blue: $color-very-dark-blue;
+    --color-light-blue: $color-light-blue;
+
+    /* Common colors */
+    --color-warning: $color-warning;
+    --color-deep-night: $color-deep-night;
+    --color-deep-ocean: $color-deep-ocean;
+  }
+}
+
+@theme {
+  --default-font-family: 'space-grotesk';
+
+  /* Background colors */
+  --color-background-primary: var(--color-background-primary);
+  --color-background-secondary: var(--color-background-secondary);
+  --color-background-dark: var(--color-background-dark);
+  --color-background-muted: var(--color-background-muted);
+
+  /* Text colors */
+  --color-text-primary: var(--color-text-primary);
+  --color-text-accent: var(--color-text-accent);
+  --color-text-link: var(--color-text-link);
+  --color-text-info: var(--color-text-info);
+
+  /* Border colors */
+  --color-border-primary: var(--color-border-primary);
+  --color-border-secondary: var(--color-border-secondary);
+  --color-border-dark: var(--color-border-dark);
+
+  /* UI colors */
+  --color-ui-button: var(--color-ui-button);
+  --color-ui-hover: var(--color-ui-hover);
+  --color-ui-active: var(--color-ui-active);
+
+  /* Gradient colors */
+  --color-gradient-start: var(--color-gradient-start);
+  --color-gradient-end: var(--color-gradient-end);
+  --color-gradient-dark: var(--color-gradient-dark);
+
+  /* Highlight colors */
+  --color-highlight: var(--color-highlight);
+  --color-highlight-alt: var(--color-highlight-alt);
+
+  /* Common colors */
+  --color-deep-blue: var(--color-deep-blue);
+  --color-midnight-blue: var(--color-midnight-blue);
+  --color-royal-blue: var(--color-royal-blue);
+  --color-electric-cyan: var(--color-electric-cyan);
+  --color-violet: var(--color-violet);
+  --color-success: var(--color-success);
+
+  /* Common colors */
+  --color-dark-navy: var(--color-dark-navy);
+  --color-very-dark-blue: var(--color-very-dark-blue);
+  --color-light-blue: var(--color-light-blue);
+
+  /* Common colors */
+  --color-warning: var(--color-warning);
+  --color-deep-night: var(--color-deep-night);
+  --color-deep-ocean: var(--color-deep-ocean);
+}

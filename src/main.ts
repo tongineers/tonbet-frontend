@@ -1,16 +1,15 @@
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
-import { createVuetify } from 'vuetify';
 import { createI18n } from 'vue-i18n';
 import { messages } from './locales';
 
-import 'vuetify/styles';
-import './assets/styles/tailwind.css';
 import App from './App.vue';
+import './assets/styles/app.css';
+import router from './router/index'
 
 const app = createApp(App)
 
-app.use(createVuetify()).
+app.use(router).
     use(createPinia()).
     use(createI18n({
         legacy: false,

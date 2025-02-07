@@ -1,0 +1,12 @@
+/* Gradients primary */
+.bg-gradient-primary {
+	@apply bg-gradient-to-tr from-[$color-electric-cyan] to-[$color-violet];
+}
+
+.bg-gradient-secondary {
+	@apply bg-gradient-to-br from-[$color-gradient-end] to-[$color-gradient-dark];
+}
+
+.bg-gradient-dark {
+	@apply bg-gradient-to-r from-[$color-midnight-blue] to-[$color-royal-blue];
+}
