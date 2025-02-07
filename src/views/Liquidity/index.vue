@@ -1,8 +1,10 @@
 <template>
     <section>
-        <div class="bg-gradient-to-r from-tonbetBgDarkFrom to-tonbetBgDarkTo min-h-screen">
-            <Header />
-            <Liquidity />
+        <div class="flex-start flex-col bg-gradient-secondary min-h-screen">
+            <div class="w-11/12">
+                <Header class="py-2" />
+                <Liquidity />
+            </div>
         </div>
     </section>
 </template>
