@@ -2,7 +2,7 @@
 $color-background-primary: #131313;
 $color-background-secondary: #1C171B;
 $color-background-dark: #1B1B1B;
-$color-background-muted: #2E272E;
+$color-background-muted: #4a404a;
 
 /* Text colors */
 $color-text-primary: #9B9B9B;
@@ -14,6 +14,10 @@ $color-text-info: #36B9E0;
 $color-border-primary: #385F86;
 $color-border-secondary: #1D2F55;
 $color-border-dark: #1D3E67;
+
+/* Label colors */
+$color-label-primary: #191554;
+$color-label-text: #656CA8;
 
 /* UI colors */
 $color-ui-button: #2AC5C7;
@@ -46,3 +50,5 @@ $color-light-blue: #518FE6;
 $color-warning: #FDBE3D;
 $color-deep-night: #061637;
 $color-deep-ocean: #0B2766;
+
+$color-noname-gray: #272727;

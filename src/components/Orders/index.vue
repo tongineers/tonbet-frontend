@@ -23,7 +23,7 @@
             <th class="text-right">{{ $t('payout') }}</th>
           </tr>
         </thead>
-        <tbody class="text-sm text-highlight">
+        <tbody class="text-sm text-highlight font-semibold">
           <tr v-for="(o, index) in orders" :key="index" class="h-14">
             <td class="text-left">{{ dateFormat(o.createdAt) }}</td>
             <td class="text-left">{{ addressShortener(o.playerAddress) }}</td>
@@ -77,7 +77,7 @@ const myBetsDisabled = () => {
 }
 </script>
 
-<style lang="postcss" scoped>
+<style scoped lang="postcss">
 table {
   border-collapse: separate;
   border-spacing: 0 5px;

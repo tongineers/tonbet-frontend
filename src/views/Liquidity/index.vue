@@ -1,8 +1,8 @@
 <template>
     <section>
-        <div class="flex-start flex-col bg-gradient-secondary min-h-screen">
+        <div class="flex-start flex-col bg-gradient-liqudity min-h-screen">
             <div class="w-11/12">
-                <Header class="py-2" />
+                <Header class="pt-3 pb-5" />
                 <Liquidity />
             </div>
         </div>

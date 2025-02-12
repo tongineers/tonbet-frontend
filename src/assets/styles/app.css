@@ -24,6 +24,10 @@
     --color-border-secondary: $color-border-secondary;
     --color-border-dark: $color-border-dark;
 
+    /* Label colors */
+    --color-label-primary: $color-label-primary;
+    --color-label-text: $color-label-text;
+
     /* UI colors */
     --color-ui-button: $color-ui-button;
     --color-ui-hover: $color-ui-hover;
@@ -55,6 +59,8 @@
     --color-warning: $color-warning;
     --color-deep-night: $color-deep-night;
     --color-deep-ocean: $color-deep-ocean;
+
+    --color-noname-gray: $color-noname-gray;
   }
 }
 
@@ -77,6 +83,10 @@
   --color-border-primary: var(--color-border-primary);
   --color-border-secondary: var(--color-border-secondary);
   --color-border-dark: var(--color-border-dark);
+
+  /* Label colors */
+  --color-label-primary: var(--color-label-primary);
+  --color-label-text: var(--color-label-text);
 
   /* UI colors */
   --color-ui-button: var(--color-ui-button);
@@ -109,4 +119,6 @@
   --color-warning: var(--color-warning);
   --color-deep-night: var(--color-deep-night);
   --color-deep-ocean: var(--color-deep-ocean);
+
+  --color-noname-gray: var(--color-noname-gray);
 }

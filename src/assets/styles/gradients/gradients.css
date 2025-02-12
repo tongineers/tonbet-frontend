@@ -14,3 +14,11 @@
 .bg-gradient-token {
 	@apply bg-gradient-to-r from-[$color-highlight-alt] to-[$color-deep-blue];
 }
+
+.bg-gradient-button {
+	@apply bg-gradient-to-tr from-[$color-text-info] to-[$color-text-link];
+}
+
+.bg-gradient-liqudity {
+	@apply bg-gradient-to-tr from-[$color-background-primary] to-[$color-background-secondary];
+}

@@ -4,7 +4,7 @@ import DiceView from '@/views/Dice/index.vue'
 import LiquidityView from '@/views/Liquidity/index.vue'
 
 const routes = [
-  { path: '/', component: DiceView },
+  { path: '/', component: LiquidityView },
   { path: '/yield', component: LiquidityView },
 ]
 
