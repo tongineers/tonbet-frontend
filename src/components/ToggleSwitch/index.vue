@@ -1,22 +1,25 @@
 <template>
-    <div class="flex items-center bg-gray-600 rounded-full p-1 w-40 cursor-pointer" @click="toggle">
+    <div class="flex items-center rounded-full text-sm font-semibold p-1 w-40 cursor-pointer"
+        :class="route.path == '/yield' ? 'bg-gradient-liqudity' : 'bg-gradient-secondary'" @click="toggle">
         <div class="w-1/2 text-center py-1 rounded-full transition-all duration-500"
-            :class="isActive ? 'bg-gray-900 text-white' : 'text-black'">
+            :class="route.path == '/' ? 'bg-gradient-button text-white' : 'text-white'">
             Dice
         </div>
         <div class="w-1/2 text-center py-1 rounded-full transition-all duration-500"
-            :class="!isActive ? 'bg-gray-900 text-white' : 'text-black'">
+            :class="route.path == '/yield' ? 'bg-gradient-button-dark text-white' : 'text-white'">
             Liquidity
         </div>
     </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, defineProps } from 'vue';
+import { useRoute, useRouter } from 'vue-router';
 
-const isActive = ref(true);
+const router = useRouter();
+const route = useRoute();
 
-const toggle = () => {
-    isActive.value = !isActive.value;
+const toggle = async () => {
+    router.push(route.path == '/' ? '/yield' : '/');
 }
 </script>

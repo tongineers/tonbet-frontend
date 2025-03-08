@@ -43,19 +43,19 @@
             </div> -->
         </div>
 
-        <!-- <div class="flex items-center">
-                <div v-if="address"
-                    class="flex items-center justify-between bg-gray-900 rounded-full px-2 py-1 text-white font-sans text-sm">
-                    {{ addressShortener(address) }}
-                    <div @click="tonConnectUI.disconnect" class="cursor-pointer">
-                        <figure class="w-5 ml-2">
-                            <img src="../../assets/images/logout.svg">
-                        </figure>
-                    </div>
+        <div class="flex items-center">
+            <div v-if="address"
+                class="flex items-center justify-between bg-gray-900 rounded-full px-2 py-1 text-white font-sans text-sm">
+                {{ addressShortener(address) }}
+                <div @click="tonConnectUI.disconnect" class="cursor-pointer">
+                    <figure class="w-5 ml-2">
+                        <img src="../../assets/images/logout.svg">
+                    </figure>
                 </div>
+            </div>
 
-                <LanguageSwitcher class="pl-3" />
-            </div> -->
+            <!-- <LanguageSwitcher class="pl-3" /> -->
+        </div>
     </section>
 </template>
 

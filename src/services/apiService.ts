@@ -12,10 +12,24 @@ const instance = axios.create({
 export class Api {
   account = {
     getAccountState,
+    getJettonState,
   };
   bets = {
     getBets,
     getBetsByAddress,
+  }
+}
+
+const getJettonState = async (address: string): Promise<Jetton | Error> => {
+  try {
+    const { data: jetton } = await instance.request<Jetton>(
+      {
+        method: 'get',
+        url: apiUrl + `/api/v1/jetton/${address}`,
+      });
+    return jetton;
+  } catch (e) {
+    return e as Error;
   }
 }
 

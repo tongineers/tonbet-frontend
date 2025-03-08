@@ -9,3 +9,7 @@
 .highlight-dark {
     
 }
+
+.highlight-accent {
+    @apply shadow-[0px_0px_73px_-30px_#EB7FF7];
+}

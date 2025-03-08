@@ -11,7 +11,7 @@
                 </div>
 
                 <!-- Add Liquidity -->
-                <div class="bg-background-dark rounded-2xl px-4 py-2 mt-4">
+                <div class="bg-background-dark highlight-accent ring-1 ring-text-accent rounded-2xl px-4 py-2 mt-4">
 
                     <!-- Title -->
                     <div class="flex-between">
@@ -27,7 +27,7 @@
                                     data-sentry-element="path" data-sentry-source-file="BalanceWalletIcon.tsx">
                                 </path>
                             </svg>
-                            <span class="text-sm text-white font-light">0</span>
+                            <span class="text-sm text-white font-light">{{ toGrams(Number(jetton.balance)) }}</span>
                         </div>
                     </div>
 
@@ -42,9 +42,19 @@
 
                         <!-- Input Will Be Here ... -->
                         <div class="flex items-end flex-col">
-                            <span class="text-white text-2xl font-semibold">0.34</span>
+                            <!-- <span class="text-white text-2xl font-semibold">0.34</span> -->
+                            <input v-model="amount"
+                                @input="amount = amount.toString().replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1')"
+                                dir="rtl" class="text-white text-2xl font-semibold focus:outline-none">
                             <span class="text-text-primary text-sm">~ $134.84</span>
                         </div>
+                    </div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="flex-center relative">
+                    <div class="flex-center absolute -top-2 bg-noname-gray rounded-lg w-6 h-6 ring-1 ring-text-accent">
+                        <span class="text-text-accent text-xs">▼</span>
                     </div>
                 </div>
 
@@ -88,9 +98,20 @@
                 </div>
 
                 <!-- Button -->
-                <div
-                    class="mt-2 h-10 flex justify-center items-center bg-gradient-to-tr from-text-accent to-text-accent rounded-2xl py-1 px-10 font-spacegrotesk font-bold text-white">
+                <div v-if="address" @click="placeLiquidity"
+                    class="cursor-pointer mt-2 h-10 flex justify-center items-center bg-gradient-to-tr from-text-accent to-text-accent rounded-2xl py-1 px-10 font-spacegrotesk font-bold text-white">
                     Add Liquidity
+                </div>
+                <div v-else @click="open" class="cursor-pointer">
+                    <div
+                        class="shine before:animate-shine rounded-full bg-gradient-to-r from-fuchsia-500 to-cyan-500 font-dicefont text-white px-12 py-1 pb-2">
+                        {{ $t('connectWallet') }}
+                    </div>
+                    <div class="h-0">
+                        <figure class="relative w-14 -top-10 -left-7">
+                            <img class="" src=" ../../assets/images/stars.png">
+                        </figure>
+                    </div>
                 </div>
             </div>
         </div>
@@ -98,6 +119,51 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed } from 'vue';
+import { useTonConnectUI, useTonConnectModal, useTonAddress, useTonWallet } from '@townsquarelabs/ui-vue';
+import { Api } from '@/services/apiService';
+import { toGrams } from '@/utils/common';
+
+let jetton = ref(<Jetton>{});
+const instance = new Api();
+
+const [tonConnectUI, _] = useTonConnectUI();
+const { state, open, close } = useTonConnectModal();
+
+const address = useTonAddress();
+const smartcontAddress = `kQBn05wJBCpLHKWUfBfBWBtZfKXG-PzfzGfqsH7XItZvIAtA`;
+
+const amount = ref(0);
+
+setInterval(async () => {
+    jetton.value = await instance.account.getJettonState(address.value) as Jetton;
+}, 1000);
+
+const placeLiquidity = async () => {
+    const transaction = {
+        from: address.value,
+        validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
+        messages: [
+            {
+                address: smartcontAddress,
+                amount: `${amount.value * 1000000000}`, // 10000 nanograms = 0.00001 Grams
+                // payload: body.toBoc().toString("base64") // payload with comment in body
+            }
+        ]
+    };
+
+    try {
+        await tonConnectUI.sendTransaction(transaction);
+        //isModalVisible.value = true;
+        // const bocCellBytes = await TonWeb.boc.Cell.oneFromBoc(TonWeb.utils.base64ToBytes(response.boc)).hash();
+        // const transactionHash = TonWeb.utils.bytesToBase64(bocCellBytes);
+
+        //const result = await monitorBetResult(address.value, new Date());
+        //betResult.value = result;
+    } catch (e) {
+        console.error(e);
+    }
+}
 </script>
 
 <style lang="postcss" scoped></style>

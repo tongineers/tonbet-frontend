@@ -19,6 +19,10 @@
 	@apply bg-gradient-to-tr from-[$color-text-info] to-[$color-text-link];
 }
 
+.bg-gradient-button-dark {
+	@apply bg-gradient-to-tr from-[$color-text-accent] to-[$color-text-dark];
+}
+
 .bg-gradient-liqudity {
 	@apply bg-gradient-to-tr from-[$color-background-primary] to-[$color-background-secondary];
 }
