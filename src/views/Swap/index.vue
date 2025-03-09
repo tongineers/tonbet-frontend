@@ -1,10 +1,9 @@
 <template>
     <section>
-        <div class="flex-start flex-col bg-gradient-dark min-h-screen">
+        <div class="flex-start flex-col bg-gradient-liqudity min-h-screen">
             <div class="w-1/3">
                 <Header class="py-4" />
-                <Dice />
-                <Orders />
+                <Liquidity class="" />
             </div>
         </div>
     </section>
@@ -12,6 +11,5 @@
 
 <script setup lang="ts">
 import Header from '@/components/Header';
-import Dice from '@/components/Dice';
-import Orders from '@/components/Orders';
+import Liquidity from '@/components/Wallet/Swap';
 </script>

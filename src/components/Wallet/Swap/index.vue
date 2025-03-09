@@ -1,21 +1,19 @@
 <template>
     <section>
-
         <!-- Liquidity Box -->
-        <div class="ring-2 ring-noname-gray highlight-secondary rounded-3xl p-px">
-            <div class="bg-gradient-liqudity rounded-[calc(1.5rem-1px)] p-2">
+        <div class="bg-gradient-button-dark highlight-secondary rounded-3xl p-px">
+            <div class="bg-gradient-token-dark rounded-[calc(1.5rem-1px)] p-2">
 
                 <!-- <div class="flex-start gap-4 ml-4">
                     <span class="text-sm text-text-primary">Deposit</span>
                     <span class="text-sm text-text-primary">Withdraw</span>
                 </div> -->
 
-                <!-- Add Liquidity -->
-                <div class="bg-background-dark highlight-accent ring-1 ring-text-accent rounded-2xl px-4 py-2">
-
+                <!-- From -->
+                <div class="bg-background-secondary rounded-2xl px-4 py-2">
                     <!-- Title -->
                     <div class="flex-between">
-                        <span class="text-sm text-text-primary">Burn Liquidity</span>
+                        <span class="text-sm text-text-primary font-semibold">From</span>
 
                         <div class="flex items-center">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="#B4C9FF" class="chakra-icon"
@@ -32,12 +30,22 @@
                     </div>
 
                     <!-- Token Selector -->
-                    <div class="flex-between py-2">
-                        <div class="flex-start bg-noname-gray rounded-xl w-min px-2 py-1">
+                    <div class="flex-between">
+                        <!-- <div class="flex-start bg-noname-gray rounded-xl w-min px-2 py-1">
                             <figure class="w-8">
-                                <img src="../../../assets/images/ellipse-dark.png">
+                                <img src="@/assets/images/ellipse-dark.png">
                             </figure>
-                            <span class="ml-2 text-xl text-white font-semibold">dTON</span>
+                            <span class="ml-2 mr-1 text-xl text-white font-semibold">DICE</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                                <path fill="#FFFFFF" d="M12 17.414 3.293 8.707l1.414-1.414L12 14.586l7.293-7.293 1.414 1.414L12 17.414z"/>
+                            </svg>
+                        </div> -->
+
+                        <div class="flex-center">
+                            <figure class="bg-gradient-token-dark rounded-full w-10 p-2">
+                                <img src="@/assets/images/ton_symbol.svg">
+                            </figure>
+                            <span class="ml-2 text-xl text-white font-semibold">TON</span>
                         </div>
 
                         <!-- Input Will Be Here ... -->
@@ -45,34 +53,46 @@
                             <!-- <span class="text-white text-2xl font-semibold">0.34</span> -->
                             <input v-model="amount"
                                 @input="amount = amount.toString().replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1')"
-                                dir="rtl" class="text-white text-2xl font-semibold focus:outline-none">
+                                dir="rtl" class="w-40 text-white text-2xl font-semibold focus:outline-none">
                             <span class="text-text-primary text-sm">~ $134.84</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Arrow -->
+                <!-- Switch -->
                 <div class="flex-center relative">
-                    <div class="flex-center absolute -top-2 bg-noname-gray rounded-lg w-6 h-6 ring-1 ring-text-accent">
-                        <span class="text-text-accent text-xs">▼</span>
+                    <div class="animate-bounce flex-center absolute -top-3 bg-noname-gray rounded-full w-8 h-8 ring-1 ring-text-accent">
+                        <!-- Arrow -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                            <path fill="#EB7FF7" d="M13 17.586V4h-2v13.586l-6.293-6.293-1.414 1.414L12 21.414l8.707-8.707-1.414-1.414L13 17.586z"/>
+                        </svg>    
                     </div>
                 </div>
 
-                <!-- You Receive -->
-                <div class="bg-background-dark rounded-2xl px-4 py-2 mt-2">
-
+                <!-- To -->
+                <div class="bg-background-secondary rounded-2xl px-4 py-2 mt-2">
                     <!-- Title -->
                     <div class="flex-between">
-                        <span class="text-sm text-text-primary">You receive</span>
+                        <span class="text-sm text-text-primary font-semibold">To</span>
                     </div>
 
                     <!-- Token Selector -->
-                    <div class="flex-between py-2">
-                        <div class="flex-start bg-noname-gray rounded-xl w-min px-2 py-1">
+                    <div class="flex-between">
+                        <!-- <div class="flex-start bg-noname-gray rounded-xl w-min px-2 py-1">
                             <figure class="w-8">
-                                <img src="../../../assets/images/ton_symbol.svg">
+                                <img src="@/assets/images/ton_symbol.svg">
                             </figure>
-                            <span class="ml-2 text-xl text-white font-semibold">TON</span>
+                            <span class="ml-2 mr-1 text-xl text-white font-semibold">TON</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                                <path fill="#FFFFFF" d="M12 17.414 3.293 8.707l1.414-1.414L12 14.586l7.293-7.293 1.414 1.414L12 17.414z"/>
+                            </svg>
+                        </div> -->
+
+                        <div class="flex-start">
+                            <figure class="bg-gradient-token-dark rounded-full w-10 p-2">
+                                <img src="@/assets/images/ellipse-dark.png">
+                            </figure>
+                            <span class="ml-2 text-xl text-white font-semibold">DICE</span>
                         </div>
 
                         <!-- Input Will Be Here ... -->
@@ -82,38 +102,21 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Share Of Pool -->
-                <div class="ring-1 ring-background-dark rounded-2xl px-4 py-2 mt-2 mb-2">
-
-                    <!-- Title -->
-                    <div class="flex-between">
-                        <span class="text-sm text-text-primary">Share of pool</span>
-                        <span class="text-xs text-text-primary">4% reward fee</span>
-                    </div>
-
-                    <div class="text-white text-2xl font-semibold py-2">
-                        <span>8.4%</span>
-                    </div>
-                </div>
-
-                <!-- Button -->
-                <div v-if="address2" @click="burnLiquidity"
-                    class="cursor-pointer mt-2 h-10 flex justify-center items-center bg-gradient-to-tr from-text-accent to-text-accent rounded-2xl py-1 px-10 font-spacegrotesk font-bold text-white">
-                    Burn
-                </div>
-                <div v-else @click="open" class="cursor-pointer">
-                    <div
-                        class="flex-center shine before:animate-shine rounded-full bg-gradient-to-r from-fuchsia-500 to-cyan-500 font-semibold text-white px-12 py-2">
-                        {{ $t('connectWallet') }}
-                    </div>
-                    <div class="h-0">
-                        <figure class="relative w-14 -top-10 -left-7">
-                            <img class="" src="../../../assets/images/stars.png">
-                        </figure>
-                    </div>
-                </div>
             </div>
+        </div>
+
+        <!-- Button -->
+        <div class="bg-text-accent rounded-2xl p-px mt-4">
+                
+            <div class="flex-center font-semibold text-white h-10">
+                {{ $t('connectWallet') }}
+            </div>
+                    <!-- <div class="h-0">
+                        <figure class="relative w-14 -top-10 -left-7">
+                            <img class="" src="@/assets/images/stars.png">
+                        </figure>
+                    </div> -->
+
         </div>
     </section>
 </template>
@@ -186,4 +189,5 @@ const burnLiquidity = async () => {
 }
 </script>
 
-<style lang="postcss" scoped></style>
+<style lang="postcss" scoped>
+</style>

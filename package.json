@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "style": "tailwindcss build src/assets/styles/index.css -o src/assets/styles/tailwind.css --watch"
+    "style": "npx @tailwindcss/cli -i src/assets/styles/app.css -o src/assets/styles/tailwind.css --watch"
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.0.3",
@@ -27,7 +27,7 @@
     "postcss": "^8.5.1",
     "postcss-load-config": "^6.0.1",
     "postcss-simple-vars": "^7.0.1",
-    "tailwindcss": "^4.0.3",
+    "tailwindcss": "^4.0.12",
     "tailwindcss-theme-variants": "^2.0.0-beta.0",
     "tonweb": "^0.0.66",
     "ts-node": "^10.9.2",

@@ -2,20 +2,20 @@
     <section>
 
         <!-- Liquidity Box -->
-        <div class="ring-1 ring-noname-gray highlight-secondary rounded-3xl p-px">
+        <div class="ring-2 ring-noname-gray highlight-secondary rounded-3xl p-px">
             <div class="bg-gradient-liqudity rounded-[calc(1.5rem-1px)] p-2">
 
-                <div class="flex-start gap-4 ml-4">
+                <!-- <div class="flex-start gap-4 ml-4">
                     <span class="text-sm text-text-primary">Deposit</span>
                     <span class="text-sm text-text-primary">Withdraw</span>
-                </div>
+                </div> -->
 
                 <!-- Add Liquidity -->
-                <div class="bg-background-dark highlight-accent ring-1 ring-text-accent rounded-2xl px-4 py-2 mt-4">
+                <div class="bg-background-dark highlight-accent ring-1 ring-text-accent rounded-2xl px-4 py-2">
 
                     <!-- Title -->
                     <div class="flex-between">
-                        <span class="text-sm text-text-primary">Add Liquidity</span>
+                        <span class="text-sm text-text-primary">Burn Liquidity</span>
 
                         <div class="flex items-center">
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="#B4C9FF" class="chakra-icon"
@@ -35,9 +35,9 @@
                     <div class="flex-between py-2">
                         <div class="flex-start bg-noname-gray rounded-xl w-min px-2 py-1">
                             <figure class="w-8">
-                                <img src="../../assets/images/ton_symbol.svg">
+                                <img src="@/assets/images/ellipse-dark.png">
                             </figure>
-                            <span class="ml-2 text-xl text-white font-semibold">TON</span>
+                            <span class="ml-2 text-xl text-white font-semibold">dTON</span>
                         </div>
 
                         <!-- Input Will Be Here ... -->
@@ -70,9 +70,9 @@
                     <div class="flex-between py-2">
                         <div class="flex-start bg-noname-gray rounded-xl w-min px-2 py-1">
                             <figure class="w-8">
-                                <img src="../../assets/images/ellipse-dark.png">
+                                <img src="@/assets/images/ton_symbol.svg">
                             </figure>
-                            <span class="ml-2 text-xl text-white font-semibold">dTON</span>
+                            <span class="ml-2 text-xl text-white font-semibold">TON</span>
                         </div>
 
                         <!-- Input Will Be Here ... -->
@@ -84,7 +84,7 @@
                 </div>
 
                 <!-- Share Of Pool -->
-                <div class="ring-1 ring-background-dark rounded-2xl px-4 py-2 mt-2">
+                <div class="ring-1 ring-background-dark rounded-2xl px-4 py-2 mt-2 mb-2">
 
                     <!-- Title -->
                     <div class="flex-between">
@@ -98,18 +98,18 @@
                 </div>
 
                 <!-- Button -->
-                <div v-if="address" @click="placeLiquidity"
+                <div v-if="address2" @click="burnLiquidity"
                     class="cursor-pointer mt-2 h-10 flex justify-center items-center bg-gradient-to-tr from-text-accent to-text-accent rounded-2xl py-1 px-10 font-spacegrotesk font-bold text-white">
-                    Add Liquidity
+                    Burn
                 </div>
                 <div v-else @click="open" class="cursor-pointer">
                     <div
-                        class="shine before:animate-shine rounded-full bg-gradient-to-r from-fuchsia-500 to-cyan-500 font-dicefont text-white px-12 py-1 pb-2">
+                        class="flex-center shine before:animate-shine rounded-full bg-gradient-to-r from-fuchsia-500 to-cyan-500 font-semibold text-white px-12 py-2">
                         {{ $t('connectWallet') }}
                     </div>
                     <div class="h-0">
                         <figure class="relative w-14 -top-10 -left-7">
-                            <img class="" src=" ../../assets/images/stars.png">
+                            <img class="" src="@/assets/images/stars.png">
                         </figure>
                     </div>
                 </div>
@@ -123,6 +123,8 @@ import { ref, computed } from 'vue';
 import { useTonConnectUI, useTonConnectModal, useTonAddress, useTonWallet } from '@townsquarelabs/ui-vue';
 import { Api } from '@/services/apiService';
 import { toGrams } from '@/utils/common';
+import { beginCell, address, toNano, internal } from '@ton/ton'
+import { RefSymbol } from '@vue/reactivity';
 
 let jetton = ref(<Jetton>{});
 const instance = new Api();
@@ -130,24 +132,42 @@ const instance = new Api();
 const [tonConnectUI, _] = useTonConnectUI();
 const { state, open, close } = useTonConnectModal();
 
-const address = useTonAddress();
+const address2 = useTonAddress();
 const smartcontAddress = `kQBn05wJBCpLHKWUfBfBWBtZfKXG-PzfzGfqsH7XItZvIAtA`;
 
 const amount = ref(0);
 
 setInterval(async () => {
-    jetton.value = await instance.account.getJettonState(address.value) as Jetton;
+    jetton.value = await instance.account.getJettonState(address2.value) as Jetton;
 }, 1000);
 
-const placeLiquidity = async () => {
+const burnLiquidity = async () => {
+    const messageBody = beginCell()
+        .storeUint(0x595f07bc, 32)
+        .storeUint(0, 64)
+        .storeCoins(120000000)
+        .storeAddress(address('0QBB3EmDBfgDijJEuVQ_oXLPhU9ZdooO_fj5i-pitsDZozDh'))
+        .storeBit(0) // no custom payload
+        .storeCoins(0) // forward amount - if > 0, will send notification message
+        .storeBit(0) // we store forwardPayload as a reference, set 1 and uncomment next line for have a comment
+        // .storeRef(forwardPayload)
+        .endCell();
+
+    // const internalMessage = internal({
+    //     to: address('EQCU2MY-kOFmuGql2LSd6u4xY8f3amOA98QX5hHDlEQQxmP-'),
+    //     value: toNano('0.1'),
+    //     bounce: true,
+    //     body: messageBody,
+    // });
+
     const transaction = {
-        from: address.value,
+        from: '0QBB3EmDBfgDijJEuVQ_oXLPhU9ZdooO_fj5i-pitsDZozDh',
         validUntil: Math.floor(Date.now() / 1000) + 60, // 60 sec
         messages: [
             {
-                address: smartcontAddress,
-                amount: `${amount.value * 1000000000}`, // 10000 nanograms = 0.00001 Grams
-                // payload: body.toBoc().toString("base64") // payload with comment in body
+                address: 'EQCU2MY-kOFmuGql2LSd6u4xY8f3amOA98QX5hHDlEQQxmP-',
+                amount: `${toNano('0.1')}`, // 10000 nanograms = 0.00001 Grams
+                payload: messageBody.toBoc().toString("base64") // payload with comment in body
             }
         ]
     };

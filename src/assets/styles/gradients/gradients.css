@@ -15,12 +15,16 @@
 	@apply bg-gradient-to-r from-[$color-highlight-alt] to-[$color-deep-blue];
 }
 
+.bg-gradient-token-dark {
+	@apply bg-gradient-to-br from-[#3B3B3D] to-[#131313];
+}
+
 .bg-gradient-button {
 	@apply bg-gradient-to-tr from-[$color-text-info] to-[$color-text-link];
 }
 
 .bg-gradient-button-dark {
-	@apply bg-gradient-to-tr from-[$color-text-accent] to-[$color-text-dark];
+	@apply bg-gradient-to-tr from-[$color-text-primary] to-[$color-text-primary];
 }
 
 .bg-gradient-liqudity {
