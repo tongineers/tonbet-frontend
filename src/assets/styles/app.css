@@ -5,6 +5,8 @@
 @import "./components.css" layer(components);
 @import "./utilities.css" layer(utilities);
 
+@import "./components/swap.css";
+
 @layer base {
   :root {
     /* Background colors */

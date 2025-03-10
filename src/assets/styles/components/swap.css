@@ -1,0 +1,43 @@
+/* Background colors */
+
+$color-background-primary:   #1D1D1D;
+$color-background-secondary: #272727;
+$color-background-dark:      #141414;
+
+/* Text colors */
+
+$color-text-primary: #929298;
+$color-text-accent:  #000000;
+$color-text-dark:    #000000;
+$color-text-link:    #000000;
+$color-text-info:    #000000;
+
+/* Border colors */
+
+$color-border-primary:   #2D272E;
+$color-border-secondary: #414348;
+$color-border-dark:      #1D3E67;
+
+@layer base {
+    :root:swap {
+        --color-background-primary:   $color-background-primary;
+        --color-background-secondary: $color-background-secondary;
+        --color-background-dark:      $color-background-dark;
+
+        --color-text-primary: $color-text-primary;
+
+        --color-border-primary:   $color-border-primary;
+        --color-border-secondary: $color-border-secondary;
+    }
+}
+
+@theme {
+    --color-swap-background-primary:   var(--color-background-primary);
+    --color-swap-background-secondary: var(--color-background-secondary);
+    --color-swap-background-dark:      var(--color-background-dark);
+
+    --color-swap-text-primary: var(--color-text-primary);
+    
+    --color-swap-border-primary:   var(--color-border-primary);
+    --color-swap-border-secondary: var(--color-border-secondary);
+}

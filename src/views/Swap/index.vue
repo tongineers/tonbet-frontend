@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div class="flex-start flex-col bg-gradient-liqudity min-h-screen">
+        <div class="flex-start flex-col bg-swap-background-dark min-h-screen">
             <div class="w-1/3">
                 <Header class="py-4" />
                 <Liquidity class="" />

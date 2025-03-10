@@ -3,7 +3,7 @@
 }
 
 .highlight-secondary {
-    @apply shadow-[0px_0px_73px_-30px_#9B9B9B];
+    @apply shadow-[0px_0px_30px_-20px_#9B9B9B];
 }
 
 .highlight-dark {
