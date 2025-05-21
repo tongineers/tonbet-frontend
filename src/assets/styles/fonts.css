@@ -2,3 +2,8 @@
 	font-family: 'space-grotesk';
 	src: url('/src/assets/fonts/space_grotesk.ttf');
 }
+
+@font-face {
+	font-family: 'cyber-truck';
+	src: url('/src/assets/fonts/cyber_truck.ttf');
+}

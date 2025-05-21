@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="mt-8 h-full">
+    <div class="mt-2 h-full">
       <!-- <ul class="flex justify-center py-3">
         <li
           :class="{ 'is-active': !myBets, 'p-2 border-b-2 font-spacegrotesk border-b-diceBlueLight text-sm font-bold text-white': true }">

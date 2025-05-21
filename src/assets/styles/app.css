@@ -68,6 +68,7 @@
 
 @theme {
   --default-font-family: 'space-grotesk';
+  --font-cyber-truck: 'cyber-truck';
 
   /* Background colors */
   --color-background-primary: var(--color-background-primary);

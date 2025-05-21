@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => {
     plugins: [vue(), nodePolyfills()],
     base: './',
     server: {
-      allowedHosts: ['828f-109-75-34-216.ngrok-free.app'],
+      allowedHosts: ['27dd-91-103-31-138.ngrok-free.app'],
     },
     resolve: {
       alias: [

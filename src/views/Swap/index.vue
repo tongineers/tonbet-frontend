@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="flex-start flex-col bg-swap-background-dark min-h-screen">
-            <div class="w-1/3">
+            <div class="px-2">
                 <Header class="py-4" />
                 <Liquidity class="" />
             </div>

@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="flex-start flex-col bg-gradient-dark min-h-screen">
-            <div class="w-1/3">
+            <div class="px-2">
                 <Header class="py-4" />
                 <Dice />
                 <Orders />
